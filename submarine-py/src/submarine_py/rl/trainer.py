@@ -4,6 +4,7 @@ from dataclasses import replace
 import logging
 from pathlib import Path
 import random
+import sys
 
 import numpy as np
 try:
@@ -62,6 +63,8 @@ def train(
             total=max(0, config.training_episodes - start_episode),
             desc="training",
             unit="episode",
+            file=sys.stdout,
+            dynamic_ncols=True,
             disable=quiet,
         )
     for episode in progress:
